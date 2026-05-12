@@ -13,4 +13,18 @@ module.exports = new EntitySchema({
     amount: { type: 'integer', nullable: false },
     date: { type: 'text', nullable: false },
   },
+  relations: {
+    debit_account: {
+      type: 'many-to-one',
+      target: 'Account',
+      joinColumn: { name: 'account_debit', referencedColumnName: 'name' },
+      nullable: false,
+    },
+    credit_account: {
+      type: 'many-to-one',
+      target: 'Account',
+      joinColumn: { name: 'account_credit', referencedColumnName: 'name' },
+      nullable: false,
+    },
+  },
 });
